@@ -12,10 +12,10 @@ const GRUPOS = {
 function FormCompromiso({ inicial, onSave, onClose }) {
   const [nombre, setNombre] = useState(inicial?.nombre || '')
   const [tipo, setTipo] = useState(inicial?.tipo || 'tarjeta')
-  const [saldo, setSaldo] = useState(inicial ? String(inicial.saldo / 1000) : '')
-  const [cuota, setCuota] = useState(inicial ? String(inicial.cuota / 1000) : '')
+  const [saldo, setSaldo] = useState(inicial ? String(inicial.saldo) : '')
+  const [cuota, setCuota] = useState(inicial ? String(inicial.cuota) : '')
   const [tasaTipo, setTasaTipo] = useState(inicial?.tasaTipo || 'media')
-  const [cuotaManejo, setCuotaManejo] = useState(inicial ? String((inicial.cuotaManejo || 0) / 1000) : '0')
+  const [cuotaManejo, setCuotaManejo] = useState(inicial ? String(inicial.cuotaManejo || 0) : '0')
   const [fechaFin, setFechaFin] = useState(inicial?.fechaFin || '')
 
   const esDeuda = ['tarjeta', 'prestamo', 'libranza', 'informal'].includes(tipo)
@@ -26,10 +26,10 @@ function FormCompromiso({ inicial, onSave, onClose }) {
     if (!nombre) return
     onSave({
       nombre, tipo,
-      saldo: esDeuda ? parseFloat(saldo) * 1000 || 0 : esAhorro ? parseFloat(saldo) * 1000 || 0 : 0,
-      cuota: parseFloat(cuota) * 1000 || 0,
+      saldo: esDeuda ? parseFloat(saldo) || 0 : esAhorro ? parseFloat(saldo) || 0 : 0,
+      cuota: parseFloat(cuota) || 0,
       tasaTipo: esDeuda ? tasaTipo : null,
-      cuotaManejo: parseFloat(cuotaManejo) * 1000 || 0,
+      cuotaManejo: parseFloat(cuotaManejo) || 0,
       fechaFin: fechaFin || null,
       activo: true,
     })
@@ -42,20 +42,20 @@ function FormCompromiso({ inicial, onSave, onClose }) {
         options={Object.entries(TIPOS_COMPROMISO).map(([k, v]) => ({ value: k, label: `${v.icon} ${v.label}` }))} />
 
       {esDeuda && <>
-        <Input label="Saldo restante" value={saldo} onChange={setSaldo} type="number" placeholder="2500" suffix="miles" />
-        <Input label="Cuota mensual" value={cuota} onChange={setCuota} type="number" placeholder="350" suffix="miles" />
+        <Input label="Saldo restante" value={saldo} onChange={setSaldo} type="number" placeholder="2500" suffix="COP" />
+        <Input label="Cuota mensual" value={cuota} onChange={setCuota} type="number" placeholder="350" suffix="COP" />
         <Select label="Nivel de tasa" value={tasaTipo} onChange={setTasaTipo}
           options={Object.entries(TIPOS_TASA).map(([k, v]) => ({ value: k, label: v.label }))} />
-        <Input label="Cuota de manejo mensual" value={cuotaManejo} onChange={setCuotaManejo} type="number" placeholder="0" suffix="miles" hint="0 si no tiene" />
+        <Input label="Cuota de manejo mensual" value={cuotaManejo} onChange={setCuotaManejo} type="number" placeholder="0" suffix="COP" hint="0 si no tiene" />
       </>}
 
       {esAhorro && <>
-        <Input label="Saldo actual" value={saldo} onChange={setSaldo} type="number" placeholder="500" suffix="miles" />
-        <Input label="Aporte mensual" value={cuota} onChange={setCuota} type="number" placeholder="500" suffix="miles" />
+        <Input label="Saldo actual" value={saldo} onChange={setSaldo} type="number" placeholder="500" suffix="COP" />
+        <Input label="Aporte mensual" value={cuota} onChange={setCuota} type="number" placeholder="500" suffix="COP" />
       </>}
 
       {esFijo && <>
-        <Input label="Valor mensual" value={cuota} onChange={setCuota} type="number" placeholder="800" suffix="miles" />
+        <Input label="Valor mensual" value={cuota} onChange={setCuota} type="number" placeholder="800" suffix="COP" />
       </>}
 
       <Input label="Fecha de fin (opcional)" value={fechaFin} onChange={setFechaFin} type="month" hint="Si tiene vencimiento o estás pagando hasta cierta fecha" />

@@ -6,7 +6,7 @@ const ICONS = ['🍽️','🚌','💊','🎬','👕','📱','🛒','☕','🐶',
 
 function FormCategoria({ inicial, onSave, onClose }) {
   const [nombre, setNombre] = useState(inicial?.nombre || '')
-  const [presupuesto, setPresupuesto] = useState(inicial ? String(inicial.presupuesto / 1000) : '')
+  const [presupuesto, setPresupuesto] = useState(inicial ? String(inicial.presupuesto) : '')
   const [icon, setIcon] = useState(inicial?.icon || '📌')
   const [esencial, setEsencial] = useState(inicial?.esencial ?? false)
 
@@ -24,7 +24,7 @@ function FormCategoria({ inicial, onSave, onClose }) {
         </div>
       </div>
       <Input label="Nombre" value={nombre} onChange={setNombre} placeholder="Ej: Alimentación" />
-      <Input label="Presupuesto mensual" value={presupuesto} onChange={setPresupuesto} type="number" placeholder="500" suffix="miles COP" />
+      <Input label="Presupuesto mensual" value={presupuesto} onChange={setPresupuesto} type="number" placeholder="500" suffix="COP" />
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
         <div>
           <p style={{ fontSize: 13, color: C.text }}>¿Gasto esencial?</p>
@@ -37,7 +37,7 @@ function FormCategoria({ inicial, onSave, onClose }) {
       </div>
       <div style={{ display: 'flex', gap: 8 }}>
         <Btn variant="ghost" onClick={onClose} style={{ flex: 1 }}>Cancelar</Btn>
-        <Btn variant="primary" onClick={() => nombre && presupuesto && onSave({ nombre, presupuesto: parseFloat(presupuesto) * 1000, icon, esencial })} disabled={!nombre || !presupuesto} style={{ flex: 1 }}>
+        <Btn variant="primary" onClick={() => nombre && presupuesto && onSave({ nombre, presupuesto: parseFloat(presupuesto), icon, esencial })} disabled={!nombre || !presupuesto} style={{ flex: 1 }}>
           {inicial ? 'Guardar' : 'Agregar'}
         </Btn>
       </div>
@@ -57,11 +57,11 @@ export default function Gastos() {
 
   function abrirGasto(cat) {
     setEditGasto(cat)
-    setValorGasto(gastosDelMes[cat.id] ? String(gastosDelMes[cat.id] / 1000) : '')
+    setValorGasto(gastosDelMes[cat.id] ? String(gastosDelMes[cat.id]) : '')
   }
 
   function guardarGasto() {
-    const v = parseFloat(valorGasto.replace(',', '.')) * 1000
+    const v = parseFloat(valorGasto.replace(',', '.')) 
     if (!isNaN(v) && v >= 0) setGasto(mesActivo, añoActivo, editGasto.id, Math.round(v))
     setEditGasto(null)
   }
@@ -146,7 +146,7 @@ export default function Gastos() {
               <span style={{ fontSize: 20, color: C.muted }}>$</span>
               <input type="number" value={valorGasto} onChange={e => setValorGasto(e.target.value)} placeholder="0" autoFocus
                 style={{ flex: 1, fontSize: 28, fontWeight: 800, background: C.surfaceHi, border: `1px solid ${C.border}`, borderRadius: 12, padding: '10px 14px', color: C.text, outline: 'none', fontFamily: "'Nunito', sans-serif" }} />
-              <span style={{ fontSize: 14, color: C.muted }}>mil</span>
+              
             </div>
             <div style={{ display: 'flex', gap: 8 }}>
               <Btn variant="ghost" onClick={() => setEditGasto(null)} style={{ flex: 1 }}>Cancelar</Btn>

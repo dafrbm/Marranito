@@ -18,20 +18,20 @@ const TIPO_OPTIONS = [
 function FormFuente({ inicial, onSave, onClose }) {
   const [nombre, setNombre] = useState(inicial?.nombre || '')
   const [tipo, setTipo] = useState(inicial?.tipo || 'empleado')
-  const [monto, setMonto] = useState(inicial ? String(inicial.monto / 1000) : '')
+  const [monto, setMonto] = useState(inicial ? String(inicial.monto) : '')
   const [periodicidad, setPeriodicidad] = useState(inicial?.periodicidad || 'mensual')
   const [probabilidad, setProbabilidad] = useState(inicial?.probabilidad ?? 80)
   const [fechaFin, setFechaFin] = useState(inicial?.fechaFin || '')
   const [renovable, setRenovable] = useState(inicial?.renovable ?? false)
 
   const esIndependiente = tipo === 'independiente'
-  const montoMensual = parseFloat(monto) * 1000 * (periodicidad === 'quincenal' ? 2 : periodicidad === 'semanal' ? 4 : 1)
+  const montoMensual = parseFloat(monto) * (periodicidad === 'quincenal' ? 2 : periodicidad === 'semanal' ? 4 : 1)
 
   function guardar() {
     if (!nombre || !monto) return
     onSave({
       nombre, tipo,
-      monto: parseFloat(monto) * 1000,
+      monto: parseFloat(monto),
       periodicidad,
       probabilidad: esIndependiente ? probabilidad : tipo === 'empleado' ? 95 : 70,
       fechaFin: fechaFin || null,
@@ -44,7 +44,7 @@ function FormFuente({ inicial, onSave, onClose }) {
     <>
       <Input label="Nombre" value={nombre} onChange={setNombre} placeholder="Ej: Salario Uniandes" />
       <Select label="Tipo" value={tipo} onChange={setTipo} options={TIPO_OPTIONS} />
-      <Input label="Monto" value={monto} onChange={setMonto} type="number" placeholder="3500" suffix="miles COP" hint={monto ? `≈ ${fmtK(montoMensual)} al mes` : ''} />
+      <Input label="Monto" value={monto} onChange={setMonto} type="number" placeholder="3.500.000" suffix="COP" hint={monto ? `≈ ${fmtK(montoMensual)} al mes` : ''} />
       <Select label="Periodicidad del pago" value={periodicidad} onChange={setPeriodicidad} options={PERIODICIDADES} />
 
       {esIndependiente && (

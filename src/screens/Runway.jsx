@@ -126,7 +126,7 @@ export default function Runway() {
   }
 
   function handleSaveReserva() {
-    const monto = parseFloat(montoReserva) * 1000
+    const monto = parseFloat(montoReserva)
     if (!nombreReserva || isNaN(monto)) return
     if (sheetReserva?.id) updateReserva(sheetReserva.id, { nombre: nombreReserva, monto, disponible: disponibleReserva })
     else addReserva({ nombre: nombreReserva, monto, disponible: disponibleReserva })
@@ -200,7 +200,7 @@ export default function Runway() {
       {/* Sheet reserva */}
       <BottomSheet open={!!sheetReserva} onClose={() => setSheetReserva(null)} title="Agregar reserva">
         <Input label="Nombre" value={nombreReserva} onChange={setNombreReserva} placeholder="Ej: Cajita Nu, Cesantías..." />
-        <Input label="Monto" value={montoReserva} onChange={setMontoReserva} type="number" placeholder="3000" suffix="miles COP" />
+        <Input label="Monto" value={montoReserva} onChange={setMontoReserva} type="number" placeholder="3.000.000" suffix="COP" />
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
           <div>
             <p style={{ fontSize: 13, color: C.text }}>¿Disponible de inmediato?</p>
