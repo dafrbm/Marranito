@@ -7,6 +7,7 @@ import Gastos from './screens/Gastos'
 import Deudas from './screens/Deudas'
 import Runway from './screens/Runway'
 import { C } from './components/ui'
+import { Analytics } from '@vercel/analytics/react'
 
 const TABS = [
   { id: 'resumen',     label: 'Inicio',       icon: '◈' },
@@ -61,6 +62,7 @@ export default function App() {
           </button>
         ))}
       </nav>
+      <Analytics />
     </div>
   )
 }
