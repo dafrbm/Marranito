@@ -42,11 +42,10 @@ function PlanTimeline({ plan }) {
 }
 
 export default function Deudas() {
-  const { compromisos, estrategiaDeuda, setEstrategia, getDeudas, calcularPlanDeudas, updateCompromiso } = useStore()
+  const { compromisos, estrategiaDeuda, setEstrategia, getDeudas, calcularPlanDeudasConEstrategia, updateCompromiso } = useStore()
   const deudas = getDeudas()
-  const planAvalanche = (() => { setEstrategia('avalanche'); return calcularPlanDeudas() })()
-  const planSnowball = (() => { setEstrategia('snowball'); return calcularPlanDeudas() })()
-  // Restore actual strategy
+  const planAvalanche = calcularPlanDeudasConEstrategia('avalanche')
+  const planSnowball = calcularPlanDeudasConEstrategia('snowball')
   const planActual = estrategiaDeuda === 'avalanche' ? planAvalanche : planSnowball
 
   const deudaTotal = deudas.reduce((s, d) => s + d.saldo, 0)

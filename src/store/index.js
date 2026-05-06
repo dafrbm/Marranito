@@ -196,6 +196,41 @@ export const useStore = create(
         return { meses, flujo: flujoMensual, totalReservas, gastoTotal, ingresoMensual }
       },
 
+      calcularPlanDeudasConEstrategia: (estrategia) => {
+        const { compromisos, getIngresoMensual, getGastosFijos, getAhorroMensual, categorias } = get()
+        const orden = { usura: 0, alta: 1, media: 2, baja: 3, cero: 4 }
+        const base = compromisos.filter(c => c.activo && ['tarjeta','prestamo','libranza','informal'].includes(c.tipo) && c.saldo > 0)
+        const sorted = estrategia === 'avalanche'
+          ? [...base].sort((a, b) => (orden[a.tasaTipo] ?? 5) - (orden[b.tasaTipo] ?? 5))
+          : [...base].sort((a, b) => a.saldo - b.saldo)
+        const deudas = sorted.map(d => ({ ...d }))
+        if (deudas.length === 0) return []
+        const ingresoTotal = getIngresoMensual()
+        const gastosFijos = getGastosFijos()
+        const ahorro = getAhorroMensual()
+        const gastosCat = categorias.reduce((s, c) => s + c.presupuesto, 0)
+        const disponible = ingresoTotal - gastosFijos - ahorro - gastosCat
+        if (disponible <= 0) return []
+        const plan = []
+        let saldos = deudas.map(d => ({ ...d }))
+        let mes = 0
+        while (saldos.some(d => d.saldo > 0) && mes < 60) {
+          mes++
+          let restante = disponible
+          const acciones = []
+          for (const d of saldos) {
+            if (d.saldo <= 0) continue
+            const pago = Math.min(d.saldo, restante)
+            d.saldo = Math.max(0, d.saldo - pago)
+            restante -= pago
+            acciones.push({ id: d.id, nombre: d.nombre, pago, cierra: d.saldo === 0, color: d.color })
+            if (restante <= 0) break
+          }
+          plan.push({ mes, acciones, saldoTotal: saldos.reduce((s, d) => s + d.saldo, 0), sobrante: restante })
+        }
+        return plan
+      },
+
       calcularPlanDeudas: () => {
         const { getDeudas, getIngresoMensual, getGastosFijos, getAhorroMensual, categorias } = get()
         const deudas = getDeudas().map(d => ({ ...d }))
