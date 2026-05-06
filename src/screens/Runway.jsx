@@ -21,7 +21,7 @@ function RunwayCard({ escenario, resultado, onEdit }) {
           <p style={{ fontSize: 12, color: C.muted }}>{escenario.desc}</p>
         </div>
         <div style={{ textAlign: 'right' }}>
-          <p style={{ fontFamily: "'Syne', sans-serif", fontSize: 36, fontWeight: 800, color, lineHeight: 1 }}>{label}</p>
+          <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 36, fontWeight: 800, color, lineHeight: 1 }}>{label}</p>
           <p style={{ fontSize: 10, color: C.hint }}>meses</p>
         </div>
       </div>
@@ -138,7 +138,7 @@ export default function Runway() {
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
         <div>
-          <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: 22, fontWeight: 800, color: C.text }}>Runway</h2>
+          <h2 style={{ fontFamily: "'Nunito', sans-serif", fontSize: 22, fontWeight: 800, color: C.text }}>Runway</h2>
           <p style={{ fontSize: 12, color: C.muted, marginTop: 2 }}>¿Cuánto tiempo aguantas?</p>
         </div>
         <Btn variant="primary" onClick={() => setSheet('nuevo')} style={{ padding: '8px 14px' }}>+ Escenario</Btn>
@@ -172,7 +172,7 @@ export default function Runway() {
         {reservas.length > 0 && (
           <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0 0', marginTop: 4, borderTop: `1px solid ${C.borderHi}` }}>
             <p style={{ fontSize: 13, fontWeight: 600, color: C.text }}>Total disponible</p>
-            <p style={{ fontSize: 14, fontWeight: 800, color: C.green, fontFamily: "'Syne', sans-serif" }}>{fmtK(totalReservas)}</p>
+            <p style={{ fontSize: 14, fontWeight: 800, color: C.green, fontFamily: "'Nunito', sans-serif" }}>{fmtK(totalReservas)}</p>
           </div>
         )}
       </Card>

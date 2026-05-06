@@ -54,7 +54,7 @@ export default function Onboarding() {
     // Paso 0: bienvenida
     <div key={0} style={{ textAlign: 'center', padding: '20px 0' }}>
       <div style={{ fontSize: 72, marginBottom: 16, filter: 'drop-shadow(0 0 20px #F5A62344)' }}>🐷</div>
-      <h1 style={{ fontFamily: "'Syne', sans-serif", fontSize: 32, fontWeight: 800, color: C.text, marginBottom: 8 }}>Marranito</h1>
+      <h1 style={{ fontFamily: "'Nunito', sans-serif", fontSize: 32, fontWeight: 800, color: C.text, marginBottom: 8 }}>Marranito</h1>
       <p style={{ fontSize: 15, color: C.muted, lineHeight: 1.7, marginBottom: 32 }}>Tu alcancía inteligente.<br />Control de finanzas personales.</p>
       <Input label="¿Cómo te llamas?" value={nombre} onChange={setNombre} placeholder="Tu nombre" />
       <Btn variant="primary" onClick={() => nombre.trim() && setPaso(1)} disabled={!nombre.trim()} style={{ width: '100%', marginTop: 8, padding: '14px' }}>
@@ -64,7 +64,7 @@ export default function Onboarding() {
 
     // Paso 1: situación laboral
     <div key={1}>
-      <p style={{ fontFamily: "'Syne', sans-serif", fontSize: 22, fontWeight: 800, color: C.text, marginBottom: 4 }}>Hola, {nombre} 👋</p>
+      <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 22, fontWeight: 800, color: C.text, marginBottom: 4 }}>Hola, {nombre} 👋</p>
       <p style={{ fontSize: 14, color: C.muted, marginBottom: 24 }}>¿Cuál es tu situación laboral actual?</p>
       {SITUACIONES.map(s => (
         <div key={s.id} onClick={() => setSituacion(s.id)}
@@ -83,7 +83,7 @@ export default function Onboarding() {
 
     // Paso 2: ingreso principal
     <div key={2}>
-      <p style={{ fontFamily: "'Syne', sans-serif", fontSize: 22, fontWeight: 800, color: C.text, marginBottom: 4 }}>Tu ingreso principal</p>
+      <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 22, fontWeight: 800, color: C.text, marginBottom: 4 }}>Tu ingreso principal</p>
       <p style={{ fontSize: 14, color: C.muted, marginBottom: 24 }}>
         {situacion === 'empleado' ? 'Tu salario mensual neto (lo que te llega después de deducciones).' : 'El ingreso mensual que recibes regularmente. Puedes ajustarlo después.'}
       </p>

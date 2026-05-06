@@ -37,7 +37,7 @@ export default function App() {
     <div style={{ background: C.bg, minHeight: '100vh', maxWidth: 430, margin: '0 auto', position: 'relative', fontFamily: "'DM Sans', system-ui, sans-serif", color: C.text }}>
 
       {/* Pig watermark */}
-      <div style={{ position: 'fixed', top: 12, left: '50%', transform: 'translateX(-50%)', fontSize: 11, color: C.hint, fontFamily: "'Syne', sans-serif", fontWeight: 700, letterSpacing: '0.15em', zIndex: 10, display: 'flex', alignItems: 'center', gap: 5 }}>
+      <div style={{ position: 'fixed', top: 12, left: '50%', transform: 'translateX(-50%)', fontSize: 11, color: C.hint, fontFamily: "'Nunito', sans-serif", fontWeight: 700, letterSpacing: '0.15em', zIndex: 10, display: 'flex', alignItems: 'center', gap: 5 }}>
         <span>🐷</span> MARRANITO
       </div>
 

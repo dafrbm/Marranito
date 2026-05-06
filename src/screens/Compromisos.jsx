@@ -89,7 +89,7 @@ export default function Compromisos() {
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
         <div>
-          <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: 22, fontWeight: 800, color: C.text }}>Compromisos</h2>
+          <h2 style={{ fontFamily: "'Nunito', sans-serif", fontSize: 22, fontWeight: 800, color: C.text }}>Compromisos</h2>
           {deudaTotal > 0 && <p style={{ fontSize: 12, color: C.muted, marginTop: 2 }}>Deuda total: <strong style={{ color: C.red }}>{fmtK(deudaTotal)}</strong></p>}
         </div>
         <Btn variant="primary" onClick={() => setSheet('nuevo')} style={{ padding: '8px 14px' }}>+ Agregar</Btn>
@@ -135,16 +135,16 @@ export default function Compromisos() {
                 <div style={{ textAlign: 'right', flexShrink: 0, marginLeft: 8 }}>
                   {esDeuda ? (
                     <>
-                      <p style={{ fontFamily: "'Syne', sans-serif", fontSize: 17, fontWeight: 800, color: c.saldo === 0 ? C.green : C.red }}>{fmtK(c.saldo)}</p>
+                      <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 17, fontWeight: 800, color: c.saldo === 0 ? C.green : C.red }}>{fmtK(c.saldo)}</p>
                       <p style={{ fontSize: 10, color: C.hint }}>cuota {fmtK(c.cuota)}</p>
                     </>
                   ) : c.tipo === 'ahorro' ? (
                     <>
-                      <p style={{ fontFamily: "'Syne', sans-serif", fontSize: 17, fontWeight: 800, color: C.purple }}>{fmtK(c.saldo)}</p>
+                      <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 17, fontWeight: 800, color: C.purple }}>{fmtK(c.saldo)}</p>
                       <p style={{ fontSize: 10, color: C.hint }}>+{fmtK(c.cuota)}/mes</p>
                     </>
                   ) : (
-                    <p style={{ fontFamily: "'Syne', sans-serif", fontSize: 17, fontWeight: 800, color: C.amber }}>{fmtK(c.cuota)}</p>
+                    <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 17, fontWeight: 800, color: C.amber }}>{fmtK(c.cuota)}</p>
                   )}
                 </div>
               </div>

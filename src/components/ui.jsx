@@ -87,7 +87,7 @@ export function Metric({ label, value, color = C.text, sub, small }) {
   return (
     <div style={{ background: C.surfaceHi, borderRadius: 12, padding: small ? '10px 12px' : '12px 14px' }}>
       <p style={{ fontSize: 11, color: C.muted, marginBottom: 3 }}>{label}</p>
-      <p style={{ fontSize: small ? 17 : 20, fontWeight: 700, color, fontVariantNumeric: 'tabular-nums', fontFamily: "'Syne', sans-serif" }}>{value}</p>
+      <p style={{ fontSize: small ? 17 : 20, fontWeight: 700, color, fontVariantNumeric: 'tabular-nums', fontFamily: "'Nunito', sans-serif" }}>{value}</p>
       {sub && <p style={{ fontSize: 10, color: C.hint, marginTop: 2 }}>{sub}</p>}
     </div>
   )
@@ -148,7 +148,7 @@ export function BottomSheet({ open, onClose, title, children }) {
       <div style={{ background: C.surface, borderRadius: '20px 20px 0 0', padding: '0 0 32px', width: '100%', border: `1px solid ${C.border}`, maxHeight: '90vh', overflowY: 'auto' }}
         onClick={e => e.stopPropagation()}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 20px 12px', borderBottom: `1px solid ${C.border}` }}>
-          <p style={{ fontSize: 16, fontWeight: 700, color: C.text, fontFamily: "'Syne', sans-serif" }}>{title}</p>
+          <p style={{ fontSize: 16, fontWeight: 700, color: C.text, fontFamily: "'Nunito', sans-serif" }}>{title}</p>
           <button onClick={onClose} style={{ background: C.surfaceHi, border: 'none', color: C.muted, fontSize: 18, width: 30, height: 30, borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>×</button>
         </div>
         <div style={{ padding: '16px 20px' }}>{children}</div>

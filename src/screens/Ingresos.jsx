@@ -95,7 +95,7 @@ export default function Ingresos() {
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
         <div>
-          <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: 22, fontWeight: 800, color: C.text }}>Ingresos</h2>
+          <h2 style={{ fontFamily: "'Nunito', sans-serif", fontSize: 22, fontWeight: 800, color: C.text }}>Ingresos</h2>
           <p style={{ fontSize: 12, color: C.muted, marginTop: 2 }}>Total mensual: <strong style={{ color: C.green }}>{fmtK(ingresoTotal)}</strong></p>
         </div>
         <Btn variant="primary" onClick={() => setSheet('nuevo')} style={{ padding: '8px 14px' }}>+ Agregar</Btn>
@@ -123,7 +123,7 @@ export default function Ingresos() {
                   </div>
                 </div>
                 <div style={{ textAlign: 'right' }}>
-                  <p style={{ fontFamily: "'Syne', sans-serif", fontSize: 18, fontWeight: 800, color: C.green }}>{fmtK(montoMensual)}</p>
+                  <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 18, fontWeight: 800, color: C.green }}>{fmtK(montoMensual)}</p>
                   <p style={{ fontSize: 10, color: C.hint }}>/ mes</p>
                 </div>
               </div>

@@ -34,7 +34,7 @@ export default function Resumen() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <button onClick={() => setMes(mesPrev, mesIdx === 0 ? añoActivo - 1 : añoActivo)}
               style={{ background: 'none', border: 'none', color: C.muted, fontSize: 18, cursor: 'pointer', padding: '0 4px' }}>‹</button>
-            <h1 style={{ fontFamily: "'Syne', sans-serif", fontSize: 26, fontWeight: 800, color: C.text }}>{mesActivo}</h1>
+            <h1 style={{ fontFamily: "'Nunito', sans-serif", fontSize: 26, fontWeight: 800, color: C.text }}>{mesActivo}</h1>
             <button onClick={() => setMes(mesNext, mesIdx === 11 ? añoActivo + 1 : añoActivo)}
               style={{ background: 'none', border: 'none', color: C.muted, fontSize: 18, cursor: 'pointer', padding: '0 4px' }}>›</button>
           </div>
@@ -42,7 +42,7 @@ export default function Resumen() {
         </div>
         <div style={{ textAlign: 'right' }}>
           <p style={{ fontSize: 11, color: C.muted, marginBottom: 3 }}>Flujo neto</p>
-          <p style={{ fontFamily: "'Syne', sans-serif", fontSize: 22, fontWeight: 800, color: flujo >= 0 ? C.green : C.red }}>
+          <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 22, fontWeight: 800, color: flujo >= 0 ? C.green : C.red }}>
             {flujo >= 0 ? '+' : ''}{fmtK(flujo)}
           </p>
         </div>
@@ -65,8 +65,8 @@ export default function Resumen() {
         <Row label="Ahorro" value={`-${fmt(ahorro)}`} color={C.purple} />
         <Row label="Presupuesto variable" value={`-${fmt(totalPresupuestoCat)}`} color={C.amber} />
         <div style={{ paddingTop: 10, marginTop: 4, borderTop: `1px solid ${C.borderHi}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <p style={{ fontSize: 15, fontWeight: 700, color: C.text, fontFamily: "'Syne', sans-serif" }}>Disponible</p>
-          <p style={{ fontSize: 18, fontWeight: 800, color: flujo >= 0 ? C.green : C.red, fontFamily: "'Syne', sans-serif" }}>{fmt(flujo)}</p>
+          <p style={{ fontSize: 15, fontWeight: 700, color: C.text, fontFamily: "'Nunito', sans-serif" }}>Disponible</p>
+          <p style={{ fontSize: 18, fontWeight: 800, color: flujo >= 0 ? C.green : C.red, fontFamily: "'Nunito', sans-serif" }}>{fmt(flujo)}</p>
         </div>
       </Card>
 

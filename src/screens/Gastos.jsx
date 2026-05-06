@@ -76,7 +76,7 @@ export default function Gastos() {
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
         <div>
-          <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: 22, fontWeight: 800, color: C.text }}>Gastos</h2>
+          <h2 style={{ fontFamily: "'Nunito', sans-serif", fontSize: 22, fontWeight: 800, color: C.text }}>Gastos</h2>
           <p style={{ fontSize: 12, color: C.muted, marginTop: 2 }}>{mesActivo} — {fmt(totalGastado)} de {fmt(totalPresupuesto)}</p>
         </div>
         <Btn variant="primary" onClick={() => setSheet('nuevo')} style={{ padding: '8px 14px' }}>+ Categoría</Btn>
@@ -114,7 +114,7 @@ export default function Gastos() {
                   <p style={{ fontSize: 11, color: C.hint }}>presupuesto: {fmt(cat.presupuesto)}</p>
                 </div>
                 <div style={{ textAlign: 'right' }}>
-                  <p style={{ fontFamily: "'Syne', sans-serif", fontSize: 18, fontWeight: 800, color: gastado === 0 ? C.hint : sobrepasado ? C.red : C.green }}>
+                  <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 18, fontWeight: 800, color: gastado === 0 ? C.hint : sobrepasado ? C.red : C.green }}>
                     {gastado === 0 ? '—' : fmtK(gastado)}
                   </p>
                   {sobrepasado && <p style={{ fontSize: 10, color: C.red }}>+{fmtK(gastado - cat.presupuesto)}</p>}
@@ -140,12 +140,12 @@ export default function Gastos() {
           onClick={() => setEditGasto(null)}>
           <div style={{ background: C.surface, borderRadius: '20px 20px 0 0', padding: '20px 20px 32px', width: '100%', border: `1px solid ${C.border}` }}
             onClick={e => e.stopPropagation()}>
-            <p style={{ fontFamily: "'Syne', sans-serif", fontSize: 17, fontWeight: 700, color: C.text, marginBottom: 2 }}>{editGasto.icon} {editGasto.nombre}</p>
+            <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 17, fontWeight: 700, color: C.text, marginBottom: 2 }}>{editGasto.icon} {editGasto.nombre}</p>
             <p style={{ fontSize: 12, color: C.muted, marginBottom: 16 }}>Presupuesto: {fmt(editGasto.presupuesto)}</p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
               <span style={{ fontSize: 20, color: C.muted }}>$</span>
               <input type="number" value={valorGasto} onChange={e => setValorGasto(e.target.value)} placeholder="0" autoFocus
-                style={{ flex: 1, fontSize: 28, fontWeight: 800, background: C.surfaceHi, border: `1px solid ${C.border}`, borderRadius: 12, padding: '10px 14px', color: C.text, outline: 'none', fontFamily: "'Syne', sans-serif" }} />
+                style={{ flex: 1, fontSize: 28, fontWeight: 800, background: C.surfaceHi, border: `1px solid ${C.border}`, borderRadius: 12, padding: '10px 14px', color: C.text, outline: 'none', fontFamily: "'Nunito', sans-serif" }} />
               <span style={{ fontSize: 14, color: C.muted }}>mil</span>
             </div>
             <div style={{ display: 'flex', gap: 8 }}>

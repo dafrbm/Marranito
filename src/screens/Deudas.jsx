@@ -58,7 +58,7 @@ export default function Deudas() {
   if (compromisos.filter(c => ['tarjeta','prestamo','libranza','informal'].includes(c.tipo)).length === 0) {
     return (
       <div>
-        <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: 22, fontWeight: 800, color: C.text, marginBottom: 16 }}>Plan de deudas</h2>
+        <h2 style={{ fontFamily: "'Nunito', sans-serif", fontSize: 22, fontWeight: 800, color: C.text, marginBottom: 16 }}>Plan de deudas</h2>
         <EmptyState icon="🎉" title="Sin deudas registradas" desc="Agrega tus deudas en Compromisos para ver el plan de pago óptimo." />
       </div>
     )
@@ -67,7 +67,7 @@ export default function Deudas() {
   return (
     <div>
       <div style={{ marginBottom: 16 }}>
-        <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: 22, fontWeight: 800, color: C.text }}>Plan de deudas</h2>
+        <h2 style={{ fontFamily: "'Nunito', sans-serif", fontSize: 22, fontWeight: 800, color: C.text }}>Plan de deudas</h2>
         <p style={{ fontSize: 12, color: C.muted, marginTop: 2 }}>Deuda total: <strong style={{ color: C.red }}>{fmtK(deudaTotal)}</strong></p>
       </div>
 
@@ -83,7 +83,7 @@ export default function Deudas() {
               style={{ padding: '12px', borderRadius: 12, border: `1px solid ${estrategiaDeuda === e.id ? C.accent : C.border}`, background: estrategiaDeuda === e.id ? C.accentDim : C.surfaceHi, cursor: 'pointer', transition: 'all 0.2s' }}>
               <p style={{ fontSize: 14, fontWeight: 700, color: estrategiaDeuda === e.id ? C.accentText : C.text, marginBottom: 2 }}>{e.label}</p>
               <p style={{ fontSize: 11, color: C.muted, marginBottom: 8 }}>{e.desc}</p>
-              <p style={{ fontFamily: "'Syne', sans-serif", fontSize: 22, fontWeight: 800, color: estrategiaDeuda === e.id ? C.accent : C.text }}>{e.meses}</p>
+              <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 22, fontWeight: 800, color: estrategiaDeuda === e.id ? C.accent : C.text }}>{e.meses}</p>
               <p style={{ fontSize: 10, color: C.hint }}>meses</p>
               <p style={{ fontSize: 10, color: C.green, marginTop: 4 }}>{e.ventaja}</p>
             </div>
@@ -113,7 +113,7 @@ export default function Deudas() {
                   </div>
                 </div>
                 <div style={{ textAlign: 'right' }}>
-                  <p style={{ fontFamily: "'Syne', sans-serif", fontSize: 16, fontWeight: 800, color: d.saldo === 0 ? C.green : C.red }}>{fmtK(d.saldo)}</p>
+                  <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: 16, fontWeight: 800, color: d.saldo === 0 ? C.green : C.red }}>{fmtK(d.saldo)}</p>
                   <p style={{ fontSize: 10, color: C.hint }}>cuota {fmtK(d.cuota)}</p>
                 </div>
               </div>
